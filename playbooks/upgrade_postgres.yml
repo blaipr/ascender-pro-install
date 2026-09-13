@@ -93,7 +93,7 @@
         verify_ssl: false
         wait: true
 
-    - name: "Apply AWX ascender-app manifest for {{ k8s_platform }}"
+    - name: "Apply ascender-app manifest for {{ k8s_platform }}"
       kubernetes.core.k8s:
         state: present
         definition: "{{ lookup('ansible.builtin.template', 'roles/ascender_install/templates/ascender-deployment/ascender-deployment-k3s.yml') }}"
