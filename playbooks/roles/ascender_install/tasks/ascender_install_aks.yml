@@ -71,12 +71,12 @@
     - postgres_statefulset.resources[0].spec.template.spec.containers[0].image is defined
     - postgres_statefulset.resources[0].spec.template.spec.containers[0].image == "docker.io/postgres:13" or postgres_statefulset.resources[0].spec.template.spec.containers[0].image == "docker.io/postgres:15"
 
-- name: Generate manifest to install AWX ascender-app k8s object with timestamp attached, for purposes of deletion later
+- name: Generate manifest to install ascender-app k8s object with timestamp attached, for purposes of deletion later
   ansible.builtin.template:
     src: "ascender-deployment/ascender-deployment-aks.yml"
     dest: "{{ tmp_dir }}/ascender-deployment-aks.yml.{{ ansible_date_time.iso8601_basic_short }}" 
 
-- name: "Apply AWX ascender-app manifest for {{ k8s_platform }}"
+- name: "Apply ascender-app manifest for {{ k8s_platform }}"
   kubernetes.core.k8s:
     state: present
     definition: "{{ lookup('ansible.builtin.template', 'ascender-deployment/ascender-deployment-aks.yml') }}"
