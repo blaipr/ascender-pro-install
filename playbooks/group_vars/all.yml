@@ -390,6 +390,10 @@ REAQT_DB_ROOT_PASSWORD: "mydbrootpassword"
 # # !!! Do not set or change this for an existing install !!!
 REAQT_PVC_SIZE_GB: 10
 
+# The readiness check asserts a floor for each collection the roles use. It is a
+# second copy of collections/requirements.yml, which is the list setup.sh actually
+# installs, so the two have to move together: a floor below what the requirements
+# install means the check passes against a collection the roles were never run on.
 required_collections:
   - name: amazon.aws
     version: "6.5.0"
@@ -402,7 +406,7 @@ required_collections:
     version_type: semver
     platform: ["azure", "dkp", "eks", "gcp", "k3s", "rke2"]
   - name: ctrliq.ascender
-    version: "22.3.0"
+    version: "25.5.1"
     compare: ">="
     version_type: semver
     platform: ["azure", "dkp", "eks", "gcp", "k3s", "rke2"]
