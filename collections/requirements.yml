@@ -1,3 +1,7 @@
+---
+# What setup.sh installs. The readiness check in playbooks/group_vars/all.yml
+# asserts a floor for the same collections, so raising a version here means
+# raising it there in the same change.
 collections:
   - name: amazon.aws
     version: ">=6.5.0"
