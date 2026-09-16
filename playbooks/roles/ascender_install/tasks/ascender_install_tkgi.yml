@@ -138,7 +138,7 @@
       - wait
       - --for=condition=available
       - --timeout=360s
-      - deployment/awx-operator-controller-manager
+      - "deployment/{{ ascender_operator_deployment }}"
       - -n
       - "{{ ASCENDER_NAMESPACE }}"
   changed_when: false
